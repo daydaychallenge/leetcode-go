@@ -32,5 +32,6 @@ func Test_Problem0028(t *testing.T) {
 		a, p := q.ans, q.para
 		fmt.Printf("~~%v~~\n", p)
 		ast.Equal(a.one, strStr(p.one, p.two), "输入:%v", p)
+		ast.Equal(a.one, strStrRK(p.one, p.two), "输入:%v", p)
 	}
 }
