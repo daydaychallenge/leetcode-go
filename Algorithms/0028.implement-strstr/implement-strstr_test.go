@@ -27,6 +27,7 @@ func Test_Problem0028(t *testing.T) {
 		{para{"abcd", "bc"}, ans{1}},
 		{para{"abcde", "c"}, ans{2}},
 		{para{"abcde", "f"}, ans{-1}},
+		{para{"abacababc", "abab"}, ans{4}},
 		{para{"BBC ABCDAB ABCDABCDABDE", "ABCDABD"}, ans{15}},
 	}
 	for _, q := range qs {

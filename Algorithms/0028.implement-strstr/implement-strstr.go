@@ -61,7 +61,12 @@ func failTable(p string) []int {
 	for k, j := -1, 0; j < pLen - 1; {
 		if k == -1 || p[k] == p[j] {
 			k, j = k+1, j+1
-			ret[j] = k
+			// 对"ababab"类字符串优化
+			if p[k] != p[j] {
+				ret[j] = k
+			} else {
+				ret[j] = ret[k]
+			}
 		} else {
 			k = ret[k]
 		}
