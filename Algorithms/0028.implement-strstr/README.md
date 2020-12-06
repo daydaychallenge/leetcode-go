@@ -56,3 +56,9 @@ https://www.youtube.com/watch?v=dgPabAsTFa8
 
 http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
 
+
+
+### Sunday 算法
+
+https://leetcode.com/problems/implement-strstr/discuss/839738/Go-Sunday
+

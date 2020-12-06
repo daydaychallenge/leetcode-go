@@ -28,6 +28,7 @@ func Test_Problem0028(t *testing.T) {
 		{para{"abcde", "c"}, ans{2}},
 		{para{"abcde", "f"}, ans{-1}},
 		{para{"abacababc", "abab"}, ans{4}},
+		{para{"mississippi", "sippia"}, ans{-1}},
 		{para{"BBC ABCDAB ABCDABCDABDE", "ABCDABD"}, ans{15}},
 	}
 	for _, q := range qs {
@@ -36,5 +37,6 @@ func Test_Problem0028(t *testing.T) {
 		ast.Equal(a.one, strStr(p.one, p.two), "输入:%v", p)
 		ast.Equal(a.one, strStrRK(p.one, p.two), "输入:%v", p)
 		ast.Equal(a.one, strStrKMP(p.one, p.two), "输入:%v", p)
+		ast.Equal(a.one, strStrSunday(p.one, p.two), "输入:%v", p)
 	}
 }

@@ -96,3 +96,40 @@ func strStrKMP(haystack string, needle string) int {
 	}
 	return -1
 }
+
+func strStrSunday(haystack string, needle string) int {
+	m, n := len(haystack), len(needle)
+	posTable := make([]int, 128)
+	for i := 0; i < 128; i++ {
+		posTable[i] = -1
+	}
+	for i := 0; i < n; i++ {
+		posTable[needle[i]] = i
+	}
+
+	i, j := 0, 0
+	for i <= m - n {
+		j = 0
+		for j < n {
+			if haystack[i] == needle[j] {
+				i++
+				j++
+			} else {
+				index := i + n - j
+				if index >= m {
+					return -1
+				}
+				if posTable[haystack[index]] == -1 {
+					i = index + 1
+				} else {
+					i = index - posTable[haystack[index]]
+				}
+				break
+			}
+		}
+		if j == n {
+			return i - n
+		}
+	}
+	return -1
+}
