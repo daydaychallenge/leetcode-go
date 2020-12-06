@@ -1,9 +1,9 @@
 package problem0028
 
 func strStr(haystack string, needle string) int {
-	hlen, nlen := len(haystack), len(needle)
-	for i := 0; i <= hlen - nlen; i++ {
-		if haystack[i:i+nlen] == needle {
+	hLen, nLen := len(haystack), len(needle)
+	for i := 0; i <= hLen - nLen; i++ {
+		if haystack[i:i+nLen] == needle {
 			return i
 		}
 	}
@@ -50,6 +50,44 @@ func strStrRK(haystack string, needle string) int {
 		if h == hashSub && haystack[i-n: i] == needle {
 			return i-n
 		}
+	}
+	return -1
+}
+
+func failTable(p string) []int {
+	pLen := len(p)
+	ret  := make([]int, pLen)
+	ret[0] = -1
+	for k, j := -1, 0; j < pLen - 1; {
+		if k == -1 || p[k] == p[j] {
+			k, j = k+1, j+1
+			ret[j] = k
+		} else {
+			k = ret[k]
+		}
+	}
+	return ret
+}
+
+func strStrKMP(haystack string, needle string) int {
+	n := len(needle)
+	if n == 0 {
+		return 0
+	}
+	if n > len(haystack) {
+		return -1
+	}
+	failJumps := failTable(needle)
+	i, j := 0, 0
+	for ; i < len(haystack) && j < n; {
+		if j == -1 || haystack[i] == needle[j] {
+			i, j = i+1, j+1
+		} else {
+			j = failJumps[j]
+		}
+	}
+	if j == n {
+		return i - j
 	}
 	return -1
 }
